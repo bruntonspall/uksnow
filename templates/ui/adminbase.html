@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>UK Snow Map</title>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css"> 
+	<link rel="stylesheet" href="/styles/admin.css" type="text/css">
+</head>
+<body>
+    <div id="doc" class="yui-t4">
+        <div id="hd">
+            <span id="headertitle"><h1><a href="/admin/">UK Snow Map Tool</a></h1></span>
+            <span id="logout">{{greeting}}</span>
+        </div>
+        <div id="bd">
+            <div id="yui-main">
+                <div id="yui-b">
+                {% block mainpanel %}
+                {% endblock %}
+                </div>
+            </div>
+            <div id="yui-b">
+            {% block sidepanel %}
+            {% endblock %}
+            </div>
+        </div>
+	</div>
+</body>
+</html>

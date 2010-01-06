@@ -1,0 +1,64 @@
+h1 {
+	color: #30f;
+    font-size:138.5%;
+}
+
+h2 {
+	color: #30f;
+    font-size:123.1%;
+}
+
+p {
+    font-size: 108%;
+}
+
+a {
+	color: #30f;
+	text-underline: none;
+}
+
+h1 a {
+    text-decoration: none;
+}
+
+#headertitle {
+	float: left;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+#logout {
+    margin-top: 0.8em;
+	float: right;
+}
+
+.edit, .delete {
+    float: right;
+    margin: 0 1em;
+}
+
+.listitem {
+    margin: 0.8em 0;
+}
+
+.errorlist {
+    color: red;
+    float: right;
+    margin-left: 1em;
+}
+
+td {
+    padding: 0.5em;
+}
+
+div.toolbar {
+	border-top: 2px solid #333;
+	padding: 0.5em 0;
+	border-bottom: 1px solid #999;
+	margin-bottom: 10px;
+}
+
+div.logout {
+    float: right;
+}
+

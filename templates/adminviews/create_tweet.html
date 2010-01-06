@@ -1,0 +1,15 @@
+{% extends "../ui/adminbase.html" %}
+
+{% block mainpanel %}
+	<div class="toolbar">
+		Create new tweet
+	</div>
+	<form action="/admin/" method="POST">
+	    <div>
+		    <table>
+			    {{form}}
+		    </table>
+		    <input type="submit" name="submit" value="submit" />
+	    </div>
+	</form>
+{% endblock %}

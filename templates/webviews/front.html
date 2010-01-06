@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>UK Snow Map</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAhVr3P3cKb29smZ-9G2v7HxQJiT5XdtFGlmC8B6Zv_4sSAO1jkhQhYQR6wJHbHq9UZ3KnVzBQh7uDkg"></script>
+<script type="text/javascript">
+  google.load("maps", "2");
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(54.1109429427243, -2.7578125);
+    var map = new google.maps.Map2(document.getElementById("map_canvas"));
+    map.setCenter(latlng, 6);
+    var georss = new GGeoXml("http://guuksnow.appspot.com/georss");
+    map.addOverlay(georss);
+    map.setUIToDefault();
+  }
+google.setOnLoadCallback(initialize);
+</script>
+</head>
+<body>
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>

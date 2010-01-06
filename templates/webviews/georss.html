@@ -1,0 +1,34 @@
+<rss version="2.0"
+        xmlns:media="http://search.yahoo.com/mrss/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+        xmlns:georss="http://www.georss.org/georss" 
+         > 
+    <channel> 
+ 
+ 
+        <title>UK Snow by Guardian Users</title> 
+        <link>http://www.guardian.co.uk/uk/interactive/2010/jan/05/weather-snow-pictures</link> 
+        <description>The most recent pictures, submitted by twitter, of snow in the uk</description> 
+        <pubDate>{% now "D, d M Y H:i:s O" %}</pubDate> 
+        <lastBuildDate>{% now "D, d M Y H:i:s O"%}</lastBuildDate> 
+        <generator>Guardian UK Snow Map</generator> 
+{% for item in items %} 
+{% if item.tweetpic %}
+        <item> 
+            <title>{{item.username}}</title> 
+            {% if item.url %}<link>{{item.url}}</link> {% endif %}
+            <description>{{item.description|escape}}</description> 
+            <pubDate>{{item.created_at|date:"D, d M Y H:i:s O"}}</pubDate> 
+            <geo:lat>{{item.lat}}</geo:lat> 
+            <geo:long>{{item.long}}</geo:long> 
+            <media:content url="{{item.tweetpic}}" type="image/jpeg" height="150" width="150"/> 
+            <media:title>{{item.message|escape}}</media:title> 
+            <media:description type="html">{{item.description|escape}}</media:description> 
+            <media:thumbnail url="{{item.tweetpic}}" height="150" width="150" type="image/jpeg" /> 
+
+        </item> 
+{% endif %}
+{% endfor %}
+</channel> 
+</rss>

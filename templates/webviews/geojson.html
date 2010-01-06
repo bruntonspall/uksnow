@@ -1,0 +1,17 @@
+{ "type": "FeatureCollection",
+  "published": "{% now "D, d M Y H:i:s O" %}",
+  "original_url": "http://www.guardian.co.uk/uk/interactive/2010/jan/05/weather-snow-pictures",
+  "features": [
+    {% for item in items %}{% if item.tweetpic %}
+    { "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [{{item.lat}},{{item.long}}]},
+      "description": "{{item.description|escape}}",
+      "tweet_date": "{{item.created_at|date:"D, d M Y H:i:s O"}}",
+      "tweet_id": "{{item.messageid}}",
+      "tweet_username": "{{item.lusername}}",
+      "tweet_original_tweet": "{{item.message|escape}}",
+      "image_url": "{{item.tweetpic}}",
+    },
+    {% endif %}{% endfor %}
+    ]
+}

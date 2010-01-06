@@ -1,0 +1,3 @@
+queue:
+- name: mainqueue
+  rate: 9/s

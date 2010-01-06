@@ -1,0 +1,5 @@
+cron:
+- description: Schedule all searches
+  url: /services/fetch_tweets
+  schedule: every 2 minutes
+
