@@ -26,6 +26,15 @@ def cached(name, timeout=60):
         return wrapper
     return wrapper
 
+def set_content_type(content_type):
+    def wrapper(method):
+        @functools.wraps(method)
+        def wrapper(self, *args, **kwargs):
+            self.response.headers["Content-Type"] = content_type
+            return method(self, *args, **kwargs)
+        return wrapper
+    return wrapper
+
 def write_response(method):
     @functools.wraps(method)
     def wrapper(self, *args, **kwargs):

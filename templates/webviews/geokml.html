@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<NetworkLinkControl>
+    <minRefreshPeriod>900</minRefreshPeriod>
+</NetworkLinkControl>
+<Document>
+{% for item in items %}{% if item.tweetpic %}
+    <Style id="normal_{{item.messageid}}">
+        <LabelStyle>
+            <color>ffffffff</color>
+            <scale>1</scale>
+        </LabelStyle>
+        <IconStyle>
+            <scale>1</scale>
+            <Icon>
+                <href>{{item.tweetpic}}</href>
+            </Icon>
+        </IconStyle>
+    </Style>
+    <Style id="highlight_{{item.messageid}}">
+        <LabelStyle>
+            <color>00ffffff</color>
+            <scale>1</scale>
+        </LabelStyle>
+        <IconStyle>
+            <scale>1</scale>
+            <Icon>
+                <href>{{item.tweetpic}}</href>
+            </Icon>
+        </IconStyle>
+    </Style>
+    <StyleMap id="{{item.messageid}}">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#normal_{{item.messageid}}</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#highlight_{{item.messageid}}</styleUrl>
+      </Pair>
+    </StyleMap>
+{% endif %}{% endfor %}
+
+    {% for item in items %}{% if item.tweetpic %}
+    <Placemark>
+        <styleUrl>#{{item.messageid}}</styleUrl>
+        <name>Photo by {{item.lusername}}</name>
+        <description>{{item.description|escape}}</description>
+        <Snippet maxLines="4"></Snippet>
+        <Point>
+            <coordinates>{{item.long}},{{item.lat}}</coordinates>
+        </Point>
+    </Placemark>
+    {% endif %}{% endfor %}
+</Document>
+</kml>

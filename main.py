@@ -28,11 +28,19 @@ class GeoJSONHandler(webapp.RequestHandler):
     def get(self):
         return helpers.render_template(self, 'webviews/geojson.html', {'items': models.get_tweets(100)})
 
+class GeoKMLHandler(webapp.RequestHandler):
+    @helpers.write_response
+    @helpers.set_content_type("text/plain")
+    @helpers.cached('geokml', timeout=300)
+    def get(self):
+        return helpers.render_template(self, 'webviews/geokml.html', {'items': models.get_tweets(100)})
+
 def main():
   application = webapp.WSGIApplication([
         ('/', MainHandler),
         ('/georss', GeoRSSHandler),
         ('/geojson', GeoJSONHandler),
+        ('/kml', GeoKMLHandler),
         ],    debug=True)
   wsgiref.handlers.CGIHandler().run(application)
 
