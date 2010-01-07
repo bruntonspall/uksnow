@@ -4,13 +4,13 @@
   "features": [
     {% for item in items %}{% if item.tweetpic %}
     { "type": "Feature",
-      "geometry": {"type": "Point", "coordinates": [{{item.lat}},{{item.long}}]},
+      "geometry": {"type": "Point", "coordinates": [{{item.long}},{{item.lat}}]},
       "description": "{{item.description|escape}}",
       "tweet_date": "{{item.created_at|date:"D, d M Y H:i:s O"}}",
       "tweet_id": "{{item.messageid}}",
-      "tweet_username": "{{item.lusername}}",
+      "tweet_username": "{{item.lusername|escape}}",
       "tweet_original_tweet": "{{item.message|escape}}",
-      "image_url": "{{item.tweetpic}}",
+      "image_url": "{{item.tweetpic|escape}}",
     },
     {% endif %}{% endfor %}
     ]
