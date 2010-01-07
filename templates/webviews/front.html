@@ -11,7 +11,7 @@
     var latlng = new google.maps.LatLng(54.1109429427243, -2.7578125);
     var map = new google.maps.Map2(document.getElementById("map_canvas"));
     map.setCenter(latlng, 6);
-    var georss = new GGeoXml("http://guuksnow.appspot.com/georss");
+    var georss = new GGeoXml("http://guuksnow.appspot.com/kml");
     map.addOverlay(georss);
     map.setUIToDefault();
   }
