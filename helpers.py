@@ -16,14 +16,15 @@ import functools
 def cached(name, timeout=60):
     def wrapper(method):
         @functools.wraps(method)
-        def wrapper(self, *args, **kwargs):
-            data = memcache.get(name)
+        def inner(*args, **kwargs):
+            cachename = name+str(args)+str(sorted(kwargs.items()))
+            data = memcache.get(cachename)
             if not data:
-                logging.info("CACHE MISS for "+name)
-                data = method(self, *args, **kwargs)
-                memcache.set(name, data, timeout)
+                logging.info("CACHE MISS for "+cachename)
+                data = method(*args, **kwargs)
+                memcache.set(cachename, data, timeout)
             return data
-        return wrapper
+        return inner
     return wrapper
 
 def set_content_type(content_type):
